@@ -4,8 +4,9 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 
 import Dashboard from "./pages/Dashboard";
-import Personas from "./pages/Personas";
-import NuevaPersona from "./pages/NuevaPersona";
+import Visitantes from "./pages/Visitantes";
+import RegistrarVisitante from "./pages/RegistrarVisitante";
+import "./App.css";
 
 function App() {
   return (
@@ -23,13 +24,13 @@ function App() {
             />
 
             <Route
-              path="/personas"
-              element={<Personas />}
+              path="/visitantes"
+              element={<Visitantes />}
             />
 
             <Route
-              path="/nueva-persona"
-              element={<NuevaPersona />}
+              path="/registrar-visitante"
+              element={<RegistrarVisitante />}
             />
           </Routes>
         </div>
