@@ -1,0 +1,150 @@
+<!-- "SupabaseCliente.js"
+
+import { createClient } from "@supabase/supabase-js";
+
+export const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);
+
+"Personas.jsx" -->
+
+<!-- ctr k c para comentar y ctr k u para descomentar  -->
+
+<!-- import { useEffect, useState } from "react";
+import { supabase } from "../supabase/supabaseClient";
+
+function Personas() {
+  const [personas, setPersonas] = useState([]);
+
+  const cargarPersonas = async () => {
+    const { data, error } = await supabase
+      .from("personas")
+      .select("*");
+
+    if (!error) {
+      setPersonas(data);
+    }
+  };
+
+  useEffect(() => {
+    cargarPersonas();
+  }, []);
+
+  return (
+    <div>
+      <h2>Listado de Personas</h2>
+
+      <table className="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Edad</th>
+          </tr>
+        </thead>
+        <tbody>
+          {personas.map((persona) => (
+            <tr key={persona.id}>
+              <td>{persona.id}</td>
+              <td>{persona.nombre}</td>
+              <td>{persona.edad}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default Personas; -->
+
+<!-- "NuevaPersona.jsx"
+import { useState } from "react";
+import { supabase } from "../supabase/supabaseClient";
+
+function NuevaPersona() {
+  const [nombre, setNombre] = useState("");
+  const [edad, setEdad] = useState("");
+
+  const guardarPersona = async (e) => {
+  e.preventDefault();
+
+  const { error } = await supabase
+    .from("personas")
+    .insert([
+      {
+        nombre,
+        edad: Number(edad),
+      },
+    ]);
+
+  if (error) {
+    alert("Error al guardar: " + error.message);
+    return;
+  }
+
+  alert("Persona guardada correctamente");
+
+  setNombre("");
+  setEdad("");
+  };
+
+  return (
+    <>
+      <h2>Nueva Persona</h2>
+
+      <form onSubmit={guardarPersona}>
+        <div className="mb-3">
+          <label className="form-label">
+            Nombre
+          </label>
+
+          <input
+            className="form-control"
+            value={nombre}
+            onChange={(e) =>
+              setNombre(e.target.value)
+            }
+          />
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label">
+            Edad
+          </label>
+
+          <input
+            type="number"
+            className="form-control"
+            value={edad}
+            onChange={(e) =>
+              setEdad(e.target.value)
+            }
+          />
+        </div>
+
+        <button
+          className="btn btn-primary"
+          type="submit"
+        >
+          Guardar
+        </button>
+      </form>
+    </>
+  );
+}
+
+export default NuevaPersona; -->
+
+<!-- Politica de supabase
+create policy "Permitir todo"
+on personas
+for all
+to anon
+using (true)
+with check (true); -->
+
+<!-- ".env.local"
+VITE_SUPABASE_URL=https://wduqunwspqvmishbigez.supabase.co
+VITE_SUPABASE_ANON_KEY=sb_publishable_DWm3UYr-JYOgwvT7p9PTNw_-9tBw52p -->
